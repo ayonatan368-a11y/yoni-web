@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yonatan Abebe — Web Developer, Software Engineer & Graphic Designer</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0ea5e9',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    html:not(.dark) body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    html:not(.dark) .bg-surface {
+      background-color: #ffffff;
+    }
+    html:not(.dark) .bg-cardbg {
+      background-color: #f1f5f9;
+    }
+    html:not(.dark) .border-custom {
+      border-color: #e2e8f0;
+    }
+    html:not(.dark) .text-muted-custom {
+      color: #475569;
+    }
+    html:not(.dark) .header-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    html.dark body {
+      background-color: #05070e;
+      color: #f8fafc;
+    }
+    html.dark .bg-surface {
+      background-color: #0d1322;
+    }
+    html.dark .bg-cardbg {
+      background-color: #141c2e;
+    }
+    html.dark .border-custom {
+      border-color: #1e293b;
+    }
+    html.dark .text-muted-custom {
+      color: #94a3b8;
+    }
+    html.dark .header-bg {
+      background-color: rgba(5, 7, 14, 0.85);
+    }
+
+    .glow-blue {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.4);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Header / Navigation (Exact Match to Besufikad Sample Floating Capsule) -->
+  <header class="fixed top-4 left-0 w-full z-40 px-4 flex justify-center">
+    <div class="max-w-5xl w-full header-bg backdrop-blur-md border border-custom rounded-full px-5 py-2.5 flex items-center justify-between shadow-2xl">
+      
+      <!-- Profile Avatar & Name -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full border border-sky-500/50 overflow-hidden flex items-center justify-center bg-black">
+          <img src="yonatan" onerror="this.onerror=null; this.src='yonatan.jpg'; if(!this.complete) this.src='yonatan.png';" alt="Yonatan Abebe" class="w-full h-full object-cover">
+        </div>
+        <span class="font-heading font-extrabold text-sm tracking-tight hidden sm:inline-block">
+          Yonatan Abebe
+        </span>
+      </a>
+
+      <!-- Navigation Capsule Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-cardbg border border-custom px-3 py-1 rounded-full text-xs font-medium">
+        <a href="#home" class="px-3.5 py-1.5 rounded-full bg-sky-500 text-white font-bold transition-all">Home</a>
+        <a href="#about" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">About</a>
+        <a href="#projects" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">Projects</a>
+        <a href="#services" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">Services</a>
+        <a href="#certificates" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">Certificates</a>
+        <a href="#cv" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">CV</a>
+        <a href="#contact" class="px-3.5 py-1.5 rounded-full hover:text-sky-500 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action & Mode Toggle Buttons -->
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="px-4 py-2 rounded-full bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition-all">
+          Let's talk &rarr;
+        </a>
+        <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-full bg-cardbg border border-custom text-xs font-bold flex items-center gap-1.5 hover:border-sky-500 transition-all cursor-pointer">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section (Exact Match Layout) -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <!-- Left Hero Text & Actions -->
+      <div class="lg:col-span-7 space-y-6 text-left">
+        
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cardbg border border-custom text-xs font-semibold uppercase tracking-wider text-muted-custom">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open to freelance & full-time roles
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
+          Hi, I'm <br>
+          <span class="text-sky-400">Yonatan</span> <br>
+          <span class="text-sky-400">Abebe</span>
+        </h1>
+
+        <p class="font-heading text-xl sm:text-2xl font-medium text-muted-custom">
+          I'm a <span class="font-bold text-white">Website developer</span>
+        </p>
+
+        <!-- Description -->
+        <p class="text-muted-custom text-base leading-relaxed max-w-lg">
+          I design and build responsive websites and web applications end to end — from the first layout and visual direction through to the code that runs it. Clean interfaces, fast pages, products that solve a real problem.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-2.5 pt-2">
+          <a href="#services" class="px-6 py-3.5 rounded-full bg-sky-500 text-slate-950 font-bold text-sm hover:bg-sky-400 transition-all glow-blue">
+            View my work &rarr;
+          </a>
+          <a href="#about" class="px-6 py-3.5 rounded-full bg-cardbg border border-custom font-semibold text-sm hover:border-sky-500 transition-all">
+            About me
+          </a>
+          <a href="#cv" class="px-6 py-3.5 rounded-full bg-cardbg border border-custom font-semibold text-sm hover:border-sky-500 transition-all">
+            See my CV
+          </a>
+          <a href="#certificates" class="px-6 py-3.5 rounded-full bg-cardbg border border-custom font-semibold text-sm hover:border-sky-500 transition-all">
+            Certificates
+          </a>
+        </div>
+
+        <!-- Capability Tags -->
+        <div class="flex flex-wrap items-center gap-2 pt-3">
+          <span class="px-3.5 py-1.5 rounded-full bg-cardbg border border-custom text-muted-custom text-xs flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Front-end development
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-cardbg border border-custom text-muted-custom text-xs flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Web applications
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-cardbg border border-custom text-muted-custom text-xs flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> UI & brand graphics
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Profile Photo & Floating Badges -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-sm">
+          
+          <!-- Floating Badge Top Left -->
+          <div class="absolute -top-3 -left-5 z-20 bg-surface backdrop-blur-md border border-custom rounded-xl p-2.5 shadow-2xl flex items-center gap-2.5">
+            <div class="p-1.5 bg-cardbg text-sky-400 rounded-lg text-sm">💻</div>
+            <div>
+              <div class="text-xs font-bold">21 projects</div>
+              <div class="text-[10px] text-muted-custom">across web & design</div>
+            </div>
+          </div>
+
+          <!-- Portrait Card -->
+          <div class="relative rounded-2xl bg-surface border border-custom overflow-hidden shadow-2xl">
+            <img src="yonatan" onerror="this.onerror=null; this.src='yonatan.jpg'; if(!this.complete) this.src='yonatan.png';" alt="Yonatan Abebe Profile Photo" class="w-full h-[430px] object-cover object-center">
+            
+            <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-custom">
+              <h3 class="font-heading font-bold text-base text-white">Yonatan Abebe</h3>
+              <p class="text-[11px] text-slate-400">Addis Ababa, Ethiopia</p>
+            </div>
+          </div>
+
+          <!-- Floating Badge Bottom Right -->
+          <div class="absolute -bottom-3 -right-5 z-20 bg-surface backdrop-blur-md border border-custom rounded-xl p-2.5 shadow-2xl flex items-center gap-2.5">
+            <div class="p-1.5 bg-cardbg text-emerald-400 rounded-lg text-sm">🎓</div>
+            <div>
+              <div class="text-xs font-bold">13 certificates</div>
+              <div class="text-[10px] text-muted-custom">Udacity & more</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-surface border-y border-custom">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl mb-16">
+        <span class="text-sky-500 font-heading font-bold text-xs tracking-widest uppercase">About Yonatan</span>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mt-2 mb-6">
+          Building useful digital experiences from idea to launch.
+        </h2>
+        <p class="text-muted-custom text-lg leading-relaxed mb-6">
+          I’m a developer and designer based in Addis Ababa, Ethiopia, working across web development, software interfaces and visual design. I enjoy turning complicated needs into clean, practical products that people can understand and use without friction.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-2xl bg-cardbg border border-custom">
+          <h3 class="font-heading font-bold text-xl mb-3 text-sky-500">My Approach: Design with purpose, build with clarity.</h3>
+          <p class="text-muted-custom leading-relaxed">
+            My work sits between strategy and implementation. I like to understand the problem deeply, shape the structure of the experience, and then turn that into a product that looks polished and feels intuitive on every screen.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-cardbg border border-custom">
+          <h3 class="font-heading font-bold text-xl mb-3 text-sky-500">Quality & Execution</h3>
+          <p class="text-muted-custom leading-relaxed">
+            Whether the goal is a landing page, an internal platform, or a complete web app, I care about the same things: thoughtful information flow, responsive design, good performance, and clean code that is easy to maintain.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sky-500 font-heading font-bold text-xs tracking-widest uppercase">Services</span>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mt-2 mb-4">
+          Thoughtful design, useful software, and websites built to work.
+        </h2>
+        <p class="text-muted-custom text-base">
+          From a focused business website to a custom web application or a cohesive visual identity, I can help shape and build the digital pieces your project needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="p-8 rounded-2xl bg-surface border border-custom hover:border-sky-500 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-4">🖥️</div>
+            <h3 class="font-heading font-bold text-xl mb-2 group-hover:text-sky-500 transition-colors">Web Development</h3>
+            <p class="text-muted-custom text-sm mb-6">Responsive, accessible websites that present your business clearly and work across screen sizes.</p>
+            <ul class="space-y-2 text-sm text-muted-custom">
+              <li>• Business and marketing websites</li>
+              <li>• Mobile-first page layouts</li>
+              <li>• Performance and cross-browser polish</li>
+              <li>• Hosting, domains, and deployment setup</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-surface border border-custom hover:border-sky-500 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-4">⚙️</div>
+            <h3 class="font-heading font-bold text-xl mb-2 group-hover:text-sky-500 transition-colors">Software Development</h3>
+            <p class="text-muted-custom text-sm mb-6">Practical web applications designed around the workflows and information people need.</p>
+            <ul class="space-y-2 text-sm text-muted-custom">
+              <li>• Ordering and booking experiences</li>
+              <li>• Firebase-backed real-time data</li>
+              <li>• Learning platforms and student portals</li>
+              <li>• Useful forms, filters, and app interactions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-surface border border-custom hover:border-sky-500 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="text-4xl mb-4">🎨</div>
+            <h3 class="font-heading font-bold text-xl mb-2 group-hover:text-sky-500 transition-colors">Graphics Design</h3>
+            <p class="text-muted-custom text-sm mb-6">Visual assets that help your brand feel consistent across digital touchpoints.</p>
+            <ul class="space-y-2 text-sm text-muted-custom">
+              <li>• Logos and brand marks</li>
+              <li>• Social media graphics</li>
+              <li>• Posters, banners, and flyers</li>
+              <li>• Colour, typography, and layout direction</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-24 bg-surface border-y border-custom">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-sky-500 font-heading font-bold text-xs tracking-widest uppercase">Workflow</span>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mt-2 mb-2">A clear process</h2>
+        <p class="text-muted-custom text-sm">From first conversation to handoff.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-2xl bg-cardbg border border-custom">
+          <div class="font-heading font-extrabold text-3xl text-sky-500 mb-2">01</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Understand</h3>
+          <p class="text-muted-custom text-sm">We clarify your audience, goals, requirements, and constraints.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-cardbg border border-custom">
+          <div class="font-heading font-extrabold text-3xl text-sky-500 mb-2">02</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Plan</h3>
+          <p class="text-muted-custom text-sm">We agree on the content, structure, visual direction, and project scope.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-cardbg border border-custom">
+          <div class="font-heading font-extrabold text-3xl text-sky-500 mb-2">03</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Build</h3>
+          <p class="text-muted-custom text-sm">I develop the agreed experience and keep the work focused on real user needs.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-cardbg border border-custom">
+          <div class="font-heading font-extrabold text-3xl text-sky-500 mb-2">04</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Refine</h3>
+          <p class="text-muted-custom text-sm">I test the result, polish the details, and prepare it for handoff or launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sky-500 font-heading font-bold text-xs tracking-widest uppercase">Verified Credentials</span>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mt-2 mb-4">Certificates</h2>
+        <p class="text-muted-custom text-base">
+          The portfolio includes 13 certificates; 4 selected certificates are shown here. They cover programming, web fundamentals, design and professional training. Four Udacity certificates include a Verify link to the issuer's page.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-surface rounded-2xl border border-custom overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group">
+          <div>
+            <div class="h-44 bg-black overflow-hidden relative cursor-pointer" onclick="openModal('Screenshot (20).png')">
+              <img src="Screenshot (20).png" alt="Data Analysis Fundamentals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-bold text-sky-500 uppercase">Udacity Nanodegree</span>
+              <h3 class="font-heading font-bold text-base mt-1 mb-1">Data Analysis Fundamentals</h3>
+              <p class="text-xs text-muted-custom">Awarded: September 12, 2025</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 border-t border-custom mt-2">
+            <a href="https://www.udacity.com/certificate/e/4f78133c-89b8-11f0-b80e-db41da29d209" target="_blank" class="text-xs font-bold text-sky-500 hover:underline">
+              Verify Certificate &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-surface rounded-2xl border border-custom overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group">
+          <div>
+            <div class="h-44 bg-black overflow-hidden relative cursor-pointer" onclick="openModal('Screenshot (24).png')">
+              <img src="Screenshot (24).png" alt="Programming Fundamentals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-bold text-sky-500 uppercase">Udacity Nanodegree</span>
+              <h3 class="font-heading font-bold text-base mt-1 mb-1">Programming Fundamentals</h3>
+              <p class="text-xs text-muted-custom">Awarded: September 11, 2025</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 border-t border-custom mt-2">
+            <a href="https://www.udacity.com/certificate/e/1ba7ab5e-8f0c-11f0-8f08-7bf45b93794f" target="_blank" class="text-xs font-bold text-sky-500 hover:underline">
+              Verify Certificate &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-surface rounded-2xl border border-custom overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group">
+          <div>
+            <div class="h-44 bg-black overflow-hidden relative cursor-pointer" onclick="openModal('Screenshot (25).png')">
+              <img src="Screenshot (25).png" alt="Artificial Intelligence Fundamentals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-bold text-sky-500 uppercase">Udacity Nanodegree</span>
+              <h3 class="font-heading font-bold text-base mt-1 mb-1">Artificial Intelligence Fundamentals</h3>
+              <p class="text-xs text-muted-custom">Awarded: September 11, 2025</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 border-t border-custom mt-2">
+            <a href="https://www.udacity.com/certificate/e/64a98350-8efc-11f0-aea9-17dcaddc315d" target="_blank" class="text-xs font-bold text-sky-500 hover:underline">
+              Verify Certificate &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-surface rounded-2xl border border-custom overflow-hidden flex flex-col justify-between hover:border-sky-500 transition-all group">
+          <div>
+            <div class="h-44 bg-black overflow-hidden relative cursor-pointer" onclick="openModal('Screenshot (26).png')">
+              <img src="Screenshot (26).png" alt="Android Developer Fundamentals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-bold text-sky-500 uppercase">Udacity Nanodegree</span>
+              <h3 class="font-heading font-bold text-base mt-1 mb-1">Android Developer Fundamentals</h3>
+              <p class="text-xs text-muted-custom">Awarded: September 10, 2025</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 border-t border-custom mt-2">
+            <a href="https://www.udacity.com/certificate/e/b70e308e-8cde-11f0-a5ac-6b44649bae08" target="_blank" class="text-xs font-bold text-sky-500 hover:underline">
+              Verify Certificate &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer Section -->
+  <footer id="contact" class="bg-surface border-t border-custom py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl mb-4">Have a project in mind?</h2>
+      <p class="text-muted-custom text-lg mb-8 max-w-xl mx-auto">
+        Share what you’re looking to make, and we can discuss the right scope and next steps.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 text-left">
+        <div class="p-5 rounded-xl bg-cardbg border border-custom">
+          <div class="text-xs font-bold text-sky-500 uppercase mb-1">Email</div>
+          <a href="mailto:ayonatan365@gmail.com" class="text-sm font-medium hover:underline">ayonatan365@gmail.com</a>
+        </div>
+        <div class="p-5 rounded-xl bg-cardbg border border-custom">
+          <div class="text-xs font-bold text-sky-500 uppercase mb-1">Phone</div>
+          <a href="tel:0921255974" class="text-sm font-medium hover:underline">0921255974</a>
+        </div>
+        <div class="p-5 rounded-xl bg-cardbg border border-custom">
+          <div class="text-xs font-bold text-sky-500 uppercase mb-1">Location</div>
+          <div class="text-sm font-medium">Addis Ababa, Ethiopia</div>
+        </div>
+      </div>
+
+      <div class="text-xs text-muted-custom pt-8 border-t border-custom">
+        © 2026 yonatan abebe. Built from scratch.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Portfolio Assistant Chat Widget -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button onclick="toggleChat()" class="px-4 py-3 rounded-full bg-sky-500 text-white font-bold shadow-2xl flex items-center gap-2 hover:bg-sky-600 transition-all">
+      💬 Portfolio assistant
+    </button>
+
+    <div id="chatBox" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 rounded-2xl bg-surface border border-custom shadow-2xl overflow-hidden flex flex-col">
+      <div class="p-4 bg-sky-500 text-white flex justify-between items-center">
+        <div>
+          <h4 class="font-bold text-sm">Portfolio assistant</h4>
+          <p class="text-xs opacity-90">Ask about Yonatan's work</p>
+        </div>
+        <button onclick="toggleChat()" class="text-white text-lg font-bold">&times;</button>
+      </div>
+
+      <div id="chatMessages" class="p-4 h-64 overflow-y-auto space-y-3 text-sm">
+        <div class="p-3 rounded-xl bg-cardbg border border-custom text-xs leading-relaxed">
+          Hi! Ask me about Yonatan’s skills, projects, services, or how to get in touch.
+        </div>
+      </div>
+
+      <div class="p-3 border-t border-custom bg-surface flex gap-2">
+        <input id="chatInput" type="text" placeholder="Your message..." class="w-full px-3 py-2 rounded-lg bg-cardbg border border-custom text-xs focus:outline-none focus:border-sky-500" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+        <button onclick="sendChatMessage()" class="px-4 py-2 rounded-lg bg-sky-500 text-white font-bold text-xs hover:bg-sky-600">Send</button>
+      </div>
+      <div class="px-3 pb-2 text-[10px] text-muted-custom text-center">
+        AI replies when available; built-in portfolio answers work without it.
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4" onclick="closeModal()">
+    <div class="relative max-w-3xl w-full" onclick="event.stopPropagation()">
+      <button class="absolute -top-10 right-0 text-white text-3xl font-bold" onclick="closeModal()">&times;</button>
+      <img id="modalImage" src="" alt="Enlarged Certificate" class="w-full h-auto rounded-xl border border-custom">
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.getElementById('themeIcon');
+      
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        themeIcon.innerText = '☀️';
+      } else {
+        html.classList.add('dark');
+        themeIcon.innerText = '🌙';
+      }
+    }
+
+    document.documentElement.classList.add('dark');
+
+    function openModal(src) {
+      document.getElementById('modalImage').src = src;
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    function toggleChat() {
+      const chatBox = document.getElementById('chatBox');
+      chatBox.classList.toggle('hidden');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const messages = document.getElementById('chatMessages');
+      const userText = input.value.trim();
+
+      if (!userText) return;
+
+      const userMsgDiv = document.createElement('div');
+      userMsgDiv.className = 'p-3 rounded-xl bg-sky-500 text-white text-xs leading-relaxed ml-auto max-w-[85%]';
+      userMsgDiv.innerText = userText;
+      messages.appendChild(userMsgDiv);
+
+      input.value = '';
+
+      setTimeout(() => {
+        const replyDiv = document.createElement('div');
+        replyDiv.className = 'p-3 rounded-xl bg-cardbg border border-custom text-xs leading-relaxed max-w-[85%]';
+        
+        const textLower = userText.toLowerCase();
+        if (textLower.includes('contact') || textLower.includes('phone') || textLower.includes('email') || textLower.includes('touch')) {
+          replyDiv.innerText = "You can contact Yonatan directly via email at ayonatan365@gmail.com or phone at 0921255974 in Addis Ababa, Ethiopia.";
+        } else if (textLower.includes('service') || textLower.includes('work') || textLower.includes('do')) {
+          replyDiv.innerText = "Yonatan offers Web Development, Software Development (practical web apps, Firebase real-time data), and Graphics Design (branding, logos, posters).";
+        } else if (textLower.includes('cert') || textLower.includes('degree') || textLower.includes('udacity')) {
+          replyDiv.innerText = "Yonatan holds 13 certificates including Udacity Nanodegrees in Data Analysis, Programming, AI, and Android Development.";
+        } else {
+          replyDiv.innerText = "Yonatan is a web developer, software engineer, and graphic designer based in Addis Ababa, Ethiopia. Feel free to contact him at ayonatan365@gmail.com!";
+        }
+
+        messages.appendChild(replyDiv);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
